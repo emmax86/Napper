@@ -15,4 +15,9 @@ public class FormContent implements Content {
         return null;
     }
 
+    @Override
+    public String getMimeType() {
+        return "application/x-www-form-urlencoded";
+    }
+
 }

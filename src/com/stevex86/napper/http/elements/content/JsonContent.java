@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class JsonContent implements Content {
 
-    private HashMap<String, ?> content;
+
 
     public JsonContent() {
 
@@ -13,6 +13,11 @@ public class JsonContent implements Content {
     @Override
     public String getOutputString() {
         return null;
+    }
+
+    @Override
+    public String getMimeType() {
+        return "application/json";
     }
 
 }

@@ -13,4 +13,9 @@ public class TextContent implements Content {
         return content;
     }
 
+    @Override
+    public String getMimeType() {
+        return "text/plain";
+    }
+
 }
