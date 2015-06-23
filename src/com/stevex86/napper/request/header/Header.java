@@ -2,20 +2,20 @@ package com.stevex86.napper.request.header;
 
 public class Header {
 
-    private String headerName;
-    private String headerContent;
+    private String key;
+    private String value;
 
-    public Header(String headerName, String headerContent) {
-        this.headerName = headerName;
-        this.headerContent = headerContent;
+    public Header(String key, String value) {
+        this.key = key;
+        this.value = value;
     }
 
-    public String getHeaderName() {
-        return headerName;
+    public String getKey() {
+        return key;
     }
 
-    public String getHeaderContent() {
-        return headerContent;
+    public String getValue() {
+        return value;
     }
 
 }
