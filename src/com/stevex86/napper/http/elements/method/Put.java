@@ -1,4 +1,4 @@
-package com.stevex86.napper.request.method;
+package com.stevex86.napper.http.elements.method;
 
 public class Put implements RequestMethod {
 

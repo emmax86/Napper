@@ -1,4 +1,4 @@
-package com.stevex86.napper.request.header;
+package com.stevex86.napper.http.elements.header;
 
 public class Header {
 
