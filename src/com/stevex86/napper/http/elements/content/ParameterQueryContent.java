@@ -3,22 +3,17 @@ package com.stevex86.napper.http.elements.content;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ParameterBodyContent implements BodyContent {
+public class ParameterQueryContent implements QueryContent {
 
     private Map<String, ?> content;
 
-    public ParameterBodyContent() {
+    public ParameterQueryContent() {
         content = new HashMap<String, Object>();
     }
 
     @Override
-    public String getOutputString() {
+    public String getQueryString() {
         return null;
-    }
-
-    @Override
-    public String getMimeType() {
-        return "text/plain";
     }
 
 }
