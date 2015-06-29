@@ -16,7 +16,6 @@ public class Request {
         this.requestMethod = requestMethod;
     }
 
-
     public void addHeader(Header header) {
         headers.add(header);
     }

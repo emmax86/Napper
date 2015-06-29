@@ -1,10 +1,10 @@
 package com.stevex86.napper.http.elements.content;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class FormContent implements Content {
 
-    private HashMap<String, String> content;
+    private Map<String, ?> content;
 
     public FormContent() {
 
