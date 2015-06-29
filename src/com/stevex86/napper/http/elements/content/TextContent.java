@@ -5,7 +5,19 @@ public class TextContent implements Content {
     private String content;
 
     public TextContent() {
+        content = "";
+    }
 
+    public TextContent(String content) {
+        this.content = content;
+    }
+
+    public void append(String content) {
+        this.content += content;
+    }
+
+    public void appendLine(String content) {
+        this.content += content + "\n";
     }
 
     @Override
