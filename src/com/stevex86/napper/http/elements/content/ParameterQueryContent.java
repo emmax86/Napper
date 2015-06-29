@@ -8,7 +8,7 @@ import java.util.Map;
 public class ParameterQueryContent implements QueryContent {
 
     private Map<String, Object> content;
-    private String builtQueryString;
+    private String builtQuery;
 
     public ParameterQueryContent() {
         content = new HashMap<String, Object>();
@@ -20,11 +20,11 @@ public class ParameterQueryContent implements QueryContent {
         }
         else {
             content.put(key, value);
-            if (builtQueryString.equals("")) {
+            if (builtQuery.equals("")) {
                 try {
-                    builtQueryString += URLEncoder.encode(key, "UTF-8");
-                    builtQueryString += "=";
-                    builtQueryString += URLEncoder.encode(value, "UTF-8");
+                    builtQuery += URLEncoder.encode(key, "UTF-8");
+                    builtQuery += "=";
+                    builtQuery += URLEncoder.encode(value, "UTF-8");
                 }
                 catch (UnsupportedEncodingException e) {
                     throw new IllegalStateException("System does not support UTF-8 encoding!");
@@ -32,10 +32,10 @@ public class ParameterQueryContent implements QueryContent {
             }
             else {
                 try {
-                    builtQueryString += "&";
-                    builtQueryString += URLEncoder.encode(key, "UTF-8");
-                    builtQueryString += "=";
-                    builtQueryString += URLEncoder.encode(value, "UTF-8");
+                    builtQuery += "&";
+                    builtQuery += URLEncoder.encode(key, "UTF-8");
+                    builtQuery += "=";
+                    builtQuery += URLEncoder.encode(value, "UTF-8");
                 }
                 catch (UnsupportedEncodingException e) {
                     throw new IllegalStateException("System does not support UTF-8 encoding!");
@@ -50,7 +50,7 @@ public class ParameterQueryContent implements QueryContent {
 
     @Override
     public String getQueryString() {
-        return builtQueryString;
+        return builtQuery;
     }
 
 }
