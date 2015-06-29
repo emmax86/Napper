@@ -5,6 +5,7 @@ import com.stevex86.napper.http.elements.content.QueryContent;
 import com.stevex86.napper.http.elements.header.Header;
 import com.stevex86.napper.http.elements.method.RequestMethod;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Request {
@@ -16,10 +17,19 @@ public class Request {
 
     public Request(RequestMethod requestMethod) {
         this.requestMethod = requestMethod;
+        this.headers = new HashSet<Header>();
     }
 
     public void addHeader(Header header) {
         headers.add(header);
+    }
+
+    public void setQueryContent(QueryContent content) {
+        queryContent = content;
+    }
+
+    public void setBodyContent(BodyContent content) {
+        bodyContent = content;
     }
 
     public void addHeaders(Set<Header> headers) {
