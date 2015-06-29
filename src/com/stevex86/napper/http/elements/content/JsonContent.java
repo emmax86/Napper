@@ -1,16 +1,16 @@
 package com.stevex86.napper.http.elements.content;
 
-// TODO: Figure out if I want to use org.JSON or Google's GSON
-
 public class JsonContent implements Content {
 
-    public JsonContent() {
+    private String json;
 
+    public JsonContent(String json) {
+        this.json = json;
     }
 
     @Override
     public String getOutputString() {
-        return null;
+        return json;
     }
 
     @Override
