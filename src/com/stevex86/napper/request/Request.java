@@ -1,6 +1,6 @@
 package com.stevex86.napper.request;
 
-import com.stevex86.napper.http.elements.content.Content;
+import com.stevex86.napper.http.elements.content.BodyContent;
 import com.stevex86.napper.http.elements.header.Header;
 import com.stevex86.napper.http.elements.method.RequestMethod;
 
@@ -10,7 +10,7 @@ public class Request {
 
     private RequestMethod requestMethod;
     private Set<Header> headers;
-    private Content content;
+    private BodyContent bodyContent;
 
     public Request(RequestMethod requestMethod) {
         this.requestMethod = requestMethod;

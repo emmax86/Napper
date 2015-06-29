@@ -1,13 +1,14 @@
 package com.stevex86.napper.http.elements.content;
 
+import java.util.HashMap;
 import java.util.Map;
 
-public class FormContent implements Content {
+public class ParameterBodyContent implements BodyContent {
 
     private Map<String, ?> content;
 
-    public FormContent() {
-
+    public ParameterBodyContent() {
+        content = new HashMap<String, Object>();
     }
 
     @Override
@@ -17,7 +18,7 @@ public class FormContent implements Content {
 
     @Override
     public String getMimeType() {
-        return "application/x-www-form-urlencoded";
+        return "text/plain";
     }
 
 }

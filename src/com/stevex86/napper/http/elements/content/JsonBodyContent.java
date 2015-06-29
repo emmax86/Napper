@@ -1,10 +1,10 @@
 package com.stevex86.napper.http.elements.content;
 
-public class JsonContent implements Content {
+public class JsonBodyContent implements BodyContent {
 
     private String json;
 
-    public JsonContent(String json) {
+    public JsonBodyContent(String json) {
         this.json = json;
     }
 

@@ -1,14 +1,14 @@
 package com.stevex86.napper.http.elements.content;
 
-public class TextContent implements Content {
+public class TextBodyContent implements BodyContent {
 
     private String content;
 
-    public TextContent() {
+    public TextBodyContent() {
         content = "";
     }
 
-    public TextContent(String content) {
+    public TextBodyContent(String content) {
         this.content = content;
     }
 
