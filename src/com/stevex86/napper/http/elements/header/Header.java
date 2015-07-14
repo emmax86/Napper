@@ -10,6 +10,10 @@ public class Header {
         this.value = value;
     }
 
+    public Header(String key, Object value) {
+        this(key, value.toString());
+    }
+
     public String getKey() {
         return key;
     }

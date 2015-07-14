@@ -1,14 +1,19 @@
 package com.stevex86.napper.http.connection;
 
+import com.stevex86.napper.http.elements.content.TextBodyContent;
 import com.stevex86.napper.http.elements.header.Header;
 import com.stevex86.napper.http.elements.route.Route;
 import com.stevex86.napper.request.Request;
 import com.stevex86.napper.response.Response;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 
 public class ConnectionHandler {
 
@@ -37,6 +42,7 @@ public class ConnectionHandler {
             writer.flush();
             writer.close();
             connection.setRequestProperty("Content-Length", "" + outputString.getBytes().length);
+            connection.setRequestProperty("Content-Type", request.getBodyContent().getMimeType());
         }
 
         for (Header entry : request.getHeaders()) {
@@ -46,8 +52,39 @@ public class ConnectionHandler {
         return connection;
     }
 
-    public Response getResponse() {
-        return null;
+    public Response getResponse() throws IOException {
+        HttpURLConnection connection = buildConnection();
+
+        Response response = new Response();
+        int responseCode = connection.getResponseCode();
+        response.setResponseCode(responseCode);
+
+        BufferedReader in;
+        if (responseCode >= 400) {
+            in = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+        }
+        else {
+            in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        }
+
+        String inputLine;
+        StringBuilder responseBodyBuilder = new StringBuilder();
+        while((inputLine = in.readLine()) != null) {
+            responseBodyBuilder.append(inputLine);
+        }
+        in.close();
+
+        Map<String, List<String>> map = connection.getHeaderFields();
+        for (Map.Entry<String, List<String>> entry : map.entrySet()) {
+            Header header = new Header(entry.getKey(), entry.getValue());
+            response.addHeader(header);
+        }
+
+        TextBodyContent content = new TextBodyContent();
+        content.append(responseBodyBuilder.toString());
+        response.setBodyContent(content);
+
+        return response;
     }
 
 }

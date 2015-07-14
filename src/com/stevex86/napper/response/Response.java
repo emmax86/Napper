@@ -16,6 +16,14 @@ public class Response {
         headers = new HashSet<Header>();
     }
 
+    public void addHeader(Header header) {
+        headers.add(header);
+    }
+
+    public void addHeaders(Set<Header> headers) {
+        this.headers.addAll(headers);
+    }
+
     public void setBodyContent(BodyContent bodyContent) {
         this.bodyContent = bodyContent;
     }
