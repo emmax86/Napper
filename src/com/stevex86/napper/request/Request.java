@@ -17,9 +17,10 @@ public class Request {
     private BodyContent bodyContent;
     private Route route;
 
-    public Request(RequestMethod requestMethod) {
+    public Request(Route route, RequestMethod requestMethod) {
         this.requestMethod = requestMethod;
         this.headers = new HashSet<Header>();
+        this.route = route;
     }
 
     public void addHeader(Header header) {
@@ -36,6 +37,26 @@ public class Request {
 
     public void addHeaders(Set<Header> headers) {
         this.headers.addAll(headers);
+    }
+
+    public RequestMethod getRequestMethod() {
+        return requestMethod;
+    }
+
+    public Set<Header> getHeaders() {
+        return headers;
+    }
+
+    public QueryContent getQueryContent() {
+        return queryContent;
+    }
+
+    public BodyContent getBodyContent() {
+        return bodyContent;
+    }
+
+    public Route getRoute() {
+        return route;
     }
 
 }
