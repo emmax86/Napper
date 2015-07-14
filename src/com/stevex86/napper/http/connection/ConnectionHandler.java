@@ -35,18 +35,18 @@ public class ConnectionHandler {
         connection.setRequestProperty("charset", "utf-8");
         connection.setUseCaches(false);
 
+        for (Header entry : request.getHeaders()) {
+            connection.setRequestProperty(entry.getKey(), entry.getValue());
+        }
+
         if (request.getBodyContent() != null) {
             String outputString = request.getBodyContent().getOutputString();
+            connection.setRequestProperty("Content-Length", "" + outputString.getBytes().length);
+            connection.setRequestProperty("Content-Type", request.getBodyContent().getMimeType());
             OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
             writer.write(outputString);
             writer.flush();
             writer.close();
-            connection.setRequestProperty("Content-Length", "" + outputString.getBytes().length);
-            connection.setRequestProperty("Content-Type", request.getBodyContent().getMimeType());
-        }
-
-        for (Header entry : request.getHeaders()) {
-            connection.setRequestProperty(entry.getKey(), entry.getValue());
         }
 
         return connection;
