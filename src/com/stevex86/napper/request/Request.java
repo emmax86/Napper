@@ -4,6 +4,7 @@ import com.stevex86.napper.http.elements.content.BodyContent;
 import com.stevex86.napper.http.elements.content.QueryContent;
 import com.stevex86.napper.http.elements.header.Header;
 import com.stevex86.napper.http.elements.method.RequestMethod;
+import com.stevex86.napper.http.elements.route.Route;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,6 +15,7 @@ public class Request {
     private Set<Header> headers;
     private QueryContent queryContent;
     private BodyContent bodyContent;
+    private Route route;
 
     public Request(RequestMethod requestMethod) {
         this.requestMethod = requestMethod;
