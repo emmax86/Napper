@@ -23,6 +23,10 @@ public class Route {
         return route.toLowerCase().startsWith("https");
     }
 
+    public String getRoute() {
+        return route;
+    }
+
     public String getURL() {
         return URL;
     }
