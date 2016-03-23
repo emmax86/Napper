@@ -70,7 +70,7 @@ public class ConnectionHandler {
         String inputLine;
         StringBuilder responseBodyBuilder = new StringBuilder();
         while((inputLine = in.readLine()) != null) {
-            responseBodyBuilder.append(inputLine);
+            responseBodyBuilder.append(inputLine).append("\n");
         }
         in.close();
 
@@ -81,7 +81,7 @@ public class ConnectionHandler {
         }
 
         TextBodyContent content = new TextBodyContent();
-        content.append(responseBodyBuilder.toString());
+        content.append(responseBodyBuilder.toString().replaceAll("\\s$", ""));
         response.setBodyContent(content);
 
         return response;
